@@ -24,7 +24,6 @@
     {"name": "Sarrebruck", "lat": 49.2333, "lng": 7.0167, "residents": ["Clémentine"]},
     {"name": "Strasbourg", "lat": 48.5734, "lng": 7.7521, "residents": ["Nicolas", "Lucile", "Daria", "Juliette", "Rachel"]},
     {"name": "Toulouse", "lat": 43.6047, "lng": 1.4442, "residents": ["Alexis", "Léa", "Amélie", "Aurelien", "Philippe", "Nicolas", "Leïla"]},
-    {"name": "Vallauris", "lat": 43.5700, "lng": 7.0500, "residents": ["Laurine"]},
     {"name": "Salon de Provence", "lat": 43.6400, "lng": 5.0900, "residents": ["Loulou"]},
     {"name": "Amsterdam", "lat": 52.3676, "lng": 4.9041, "residents": ["Benoit"]},
     {"name": "Luxembourg", "lat": 49.6116, "lng": 6.1319, "residents": ["Alexandre"]},
