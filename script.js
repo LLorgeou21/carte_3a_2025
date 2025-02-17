@@ -1,16 +1,59 @@
-// Fonction pour charger les données JSON
-async function loadCities() {
+// Fonction pour charger et parser le fichier CSV
+async function loadCSV() {
     try {
-        const response = await fetch('cities.json');
+        const response = await fetch('vraidata.csv');
         if (!response.ok) {
-            throw new Error('Erreur lors du chargement des données des villes');
+            throw new Error('Erreur lors du chargement du fichier CSV');
         }
-        return await response.json();
+        const csvText = await response.text();
+        console.log('CSV chargé avec succès');
+        return parseCSV(csvText);
     } catch (error) {
         console.error('Erreur:', error);
-        alert('Impossible de charger les données des villes.');
+        alert('Impossible de charger le fichier CSV.');
         return [];
     }
+}
+
+// Fonction pour parser le texte CSV
+function parseCSV(csvText) {
+    const lines = csvText.split('\n');
+    const headers = lines[0].split(',');
+    const data = lines.slice(1).map(line => {
+        const values = line.split(',');
+        if (values.length !== headers.length) {
+            console.warn('Ligne ignorée en raison d\'un nombre incorrect de valeurs:', line);
+            return null;
+        }
+        return headers.reduce((obj, header, index) => {
+            obj[header.trim()] = values[index].trim();
+            return obj;
+        }, {});
+    }).filter(row => row !== null); // Filtrer les lignes nulles
+    console.log('CSV parsé avec succès');
+    return data;
+}
+
+// Fonction pour charger les données des villes à partir du CSV
+async function loadCities() {
+    const data = await loadCSV();
+    const cities = {};
+
+    for (const row of data) {
+        const cityName = row.Ville_Nettoyee.toLowerCase();
+        if (!cities[cityName]) {
+            cities[cityName] = {
+                name: cityName,
+                lat: parseFloat(row.Latitude),
+                lng: parseFloat(row.Longitude),
+                residents: []
+            };
+        }
+        cities[cityName].residents.push(`${row.Prenom} ${row.Nom} (${row.Entreprise})`);
+    }
+
+    console.log('Données des villes chargées avec succès');
+    return Object.values(cities);
 }
 
 // Initialiser la carte centrée sur la France
@@ -28,7 +71,7 @@ loadCities().then(cities => {
     cities.forEach(city => {
         const marker = L.marker([city.lat, city.lng])
             .addTo(map)
-            .bindPopup(`<b>${city.name}</b><br>En stage: ${city.residents ? city.residents.join(', ') : 'Aucun résident listé'}`);
+            .bindPopup(`<b>${city.name.charAt(0).toUpperCase() + city.name.slice(1)}</b><br>En stage: ${city.residents ? city.residents.join(', ') : 'Aucun résident listé'}`);
 
         // Ouvrir la popup au clic
         marker.on('click', function() {
@@ -41,6 +84,8 @@ loadCities().then(cities => {
             marker
         });
     });
+
+    console.log('Marqueurs de villes ajoutés avec succès');
 });
 
 // Fonction pour afficher/masquer le menu
@@ -48,6 +93,7 @@ function toggleMenu() {
     const menu = document.getElementById("menu");
     menu.classList.toggle("open");
 }
+
 // Gestion de la recherche et centrage sur la ville trouvée
 document.getElementById('search').addEventListener('input', function() {
     const query = this.value.toLowerCase();
@@ -83,7 +129,7 @@ document.getElementById('search').addEventListener('input', function() {
             city.residents.forEach(resident => {
                 if (resident.includes(query)) {
                     const residentLi = document.createElement('li');
-                    residentLi.textContent = `${resident} (${city.name})`;
+                    residentLi.textContent = `${resident} (${city.name.charAt(0).toUpperCase() + city.name.slice(1)})`;
                     residentLi.onclick = () => {
                         city.marker.openPopup();
                         map.setView(city.marker.getLatLng(), 10);
