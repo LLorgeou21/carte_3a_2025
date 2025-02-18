@@ -12,7 +12,7 @@ Louvet,Nathan,Paris ,MBDA,48.8588897,2.3200410217200766,Paris
 Chauvet,Axelle ,Bourges,DGA,47.0811658,2.399125,Bourges
 Rousset,Clotilde ,Grenoble,CEA,45.1875602,5.7357819,Grenoble
 De Faria,Emma,Paris (7ème),INI-CERAH,48.8588897,2.3200410217200766,Paris
-Taouzinet,Marie,Paris,Pasqal,48.8588897,2.3200410217200766,Paris
+Taouzinet,Marie,Massy,Pasqal,49.6902106,1.399492,Massy
 Martin,Emma,Creil,DRM,49.2607914,2.4733771,Creil
 Bouhanna,Mathis,Lyon,One Ortho,45.7578137,4.8320114,Lyon
 Testé,Léa ,Toulouse,ONERA,43.6044622,1.4442469,Toulouse
@@ -60,7 +60,7 @@ BOUILLOUX,pierrick,fribourg,stryker cesureeee,46.8055656,7.1612669,fribourg
 TECHI,Rachel,Lyon,OAS /CRAL,45.7578137,4.8320114,Lyon
 TECHI,Rachel,Strasbourg,OAS /CRAL,48.584614,7.7507127,Strasbourg
 Karl,Alexis,Prague,CVUT,50.0874654,14.4212535,Prague
-Said ,Yosra,Leiden (Pays Bas) ,Medis Medical Imaging,52.1594747,4.4908843,Leiden
+Said ,Yosra,"Leiden, Pays Bas ",Medis Medical Imaging,,,"Leiden, Pays Bas"
 Ferreira,Emilie,Paris,Physics for Medicine ,48.8588897,2.3200410217200766,Paris
 Fiack,Martin,Paris,MBDA,48.8588897,2.3200410217200766,Paris
 El Lupo,Charles,Paris (10ème),Gleamer,48.8588897,2.3200410217200766,Paris
@@ -69,3 +69,6 @@ Lardat,Félix ,Sophia-antipolis,fastlite ,43.6195225,7.0518158,Sophia-antipolis
 Blon,Julie,Strasbourg ,Icube,48.584614,7.7507127,Strasbourg
 Chevalerias,Dorian,Lisbonne,Yelhow,38.7077507,-9.1365919,Lisbonne
 Fathi,Yasmine,Dunkerque,Arcelormittal,51.0347708,2.3772525,Dunkerque
+Fathi,Yasmine,Dunkerque,Arcelormittal,51.0347708,2.3772525,Dunkerque
+Thiriet,Chloé ,Bordeaux ,LP2N (Institut d'Optique),44.841225,-0.5800364,Bordeaux
+Mesquita,Samuel,Strasbourg,Observatoire Astronomique de Strasbourg ,48.584614,7.7507127,Strasbourg
